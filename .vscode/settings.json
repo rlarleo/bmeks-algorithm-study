@@ -12,5 +12,8 @@
         "map": "cpp",
         "iosfwd": "cpp",
         "stack": "cpp"
-    }
+    },
+    "C_Cpp.clang_format_style": "{ IndentWidth: 4, ColumnLimit: 80 }",
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "editor.formatOnSave": true,
 }

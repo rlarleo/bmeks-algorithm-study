@@ -3,50 +3,52 @@
 
 using namespace std;
 
-void TieCin()
-{
-    ios_base::sync_with_stdio(0);cin.tie(0);
+void TieCin() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 }
 
-bool IsPopable(char c, char stackTop)
-{
-    if(c == ')' && stackTop == '(') return true;
-    else if(c == ']' && stackTop == '[') return true;
+bool IsPopable(char c, char stackTop) {
+    if (c == ')' && stackTop == '(')
+        return true;
+    else if (c == ']' && stackTop == '[')
+        return true;
     return false;
 }
 
-void Output(int i, int wordLength, bool stackEmpty)
-{
-    if(i < wordLength) cout << "no" << endl;
-    else if(stackEmpty) cout << "yes" << endl;
-    else cout << "no" << endl;
+void Output(int i, int wordLength, bool stackEmpty) {
+    if (i < wordLength)
+        cout << "no" << endl;
+    else if (stackEmpty)
+        cout << "yes" << endl;
+    else
+        cout << "no" << endl;
 }
 
-int main()
-{
+int main() {
     TieCin();
 
-    while(true)
-    {
+    while (true) {
         stack<char> myStack;
         string words;
 
         getline(cin, words);
 
-        if(words == ".") break;
+        if (words == ".")
+            break;
         int i;
-        for(i = 0; i < words.length(); i++)
-        {
-            if(words[i] == '(' || words[i] == '[') myStack.push(words[i]);
-            else if(words[i] == ')' || words[i] == ']')
-            {
-                if(!myStack.empty() && IsPopable(words[i], myStack.top())) myStack.pop();
-                else break;
+        for (i = 0; i < words.length(); i++) {
+            if (words[i] == '(' || words[i] == '[')
+                myStack.push(words[i]);
+            else if (words[i] == ')' || words[i] == ']') {
+                if (!myStack.empty() && IsPopable(words[i], myStack.top()))
+                    myStack.pop();
+                else
+                    break;
             }
         }
 
         Output(i, words.length(), myStack.empty());
-
     }
 
     return 0;
