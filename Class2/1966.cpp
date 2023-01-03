@@ -18,7 +18,9 @@ int main() {
     for (int i = 0; i < t; i++) {
         queue<pair<int, int>> que;
         priority_queue<int> pq;
+
         cin >> n >> m;
+
         for (int j = 0; j < n; j++) {
             int input;
             cin >> input;
