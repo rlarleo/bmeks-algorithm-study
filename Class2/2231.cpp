@@ -1,5 +1,5 @@
 #include <iostream>
-#include <queue>
+#include <string>
 
 using namespace std;
 
@@ -8,40 +8,31 @@ void TieCin() {
     cin.tie(0);
 }
 
+int divideSum(int n) {
+    int sum = n;
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    return sum;
+}
+
 int main() {
     TieCin();
 
-    int t, n, m;
+    int n;
+    cin >> n;
 
-    cin >> t;
-
-    for (int i = 0; i < t; i++) {
-        queue<pair<int, int>> que;
-        priority_queue<int> pq;
-
-        cin >> n >> m;
-
-        for (int j = 0; j < n; j++) {
-            int input;
-            cin >> input;
-            que.push({j, input});
-            pq.push(input);
+    int i;
+    for (i = 0; i < 1000000; i++) {
+        int result = divideSum(i);
+        if (result == n) {
+            cout << i;
+            break;
         }
-        int result = 1;
-        while (true) {
-            if (pq.top() == que.front().second) {
-                if (que.front().first == m)
-                    break;
-                que.pop();
-                pq.pop();
-                result++;
-            } else {
-                que.push(que.front());
-                que.pop();
-            }
-        }
-        cout << result << endl;
     }
+    if (i == 1000000)
+        cout << 0;
 
     return 0;
 }

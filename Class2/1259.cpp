@@ -1,5 +1,5 @@
 #include <iostream>
-#include <queue>
+#include <string>
 
 using namespace std;
 
@@ -8,39 +8,27 @@ void TieCin() {
     cin.tie(0);
 }
 
+void IsPalindrome(int n) {
+    string number = to_string(n);
+    for (int i = 0; i < number.length() / 2; i++) {
+        if (number[i] != number[number.length() - i - 1]) {
+            cout << "no" << endl;
+            return;
+        }
+    }
+    cout << "yes" << endl;
+}
+
 int main() {
     TieCin();
 
-    int t, n, m;
+    while (true) {
+        int n;
+        cin >> n;
+        if (n == 0)
+            break;
 
-    cin >> t;
-
-    for (int i = 0; i < t; i++) {
-        queue<pair<int, int>> que;
-        priority_queue<int> pq;
-
-        cin >> n >> m;
-
-        for (int j = 0; j < n; j++) {
-            int input;
-            cin >> input;
-            que.push({j, input});
-            pq.push(input);
-        }
-        int result = 1;
-        while (true) {
-            if (pq.top() == que.front().second) {
-                if (que.front().first == m)
-                    break;
-                que.pop();
-                pq.pop();
-                result++;
-            } else {
-                que.push(que.front());
-                que.pop();
-            }
-        }
-        cout << result << endl;
+        IsPalindrome(n);
     }
 
     return 0;
