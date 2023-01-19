@@ -23,7 +23,7 @@ void Dfs(int v) {
     cout << v << ' ';
     for (int i = 1; i < 1001; i++) {
         if (graph[v][i] && !visited[i]) {
-            dfs(i);
+            Dfs(i);
         }
     }
 }
